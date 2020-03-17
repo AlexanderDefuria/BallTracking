@@ -1,9 +1,40 @@
-<html>
-  <head>
-    <title>Pi Video Surveillance</title>
-  </head>
-  <body>
-    <h1>Pi Video Surveillance</h1>
-    <img src="{{ url_for('video_feed') }}">
-  </body>
-</html>
+<title>Pi Ball Tracking</title>
+
+{{ form.csrf_token }}
+<div style="background-color: rgb(30,30,30); width: 100%; height: 100%; position: absolute; top: 0; left: 0; display: inline-flex">
+    <div style="text-align: center;height: 100%; width: 60%;">
+      <h1 style="color: aliceblue;"> Pi Ball Tracking </h1>
+      <img src="{{ url_for('raw_video_feed') }}">
+    </div>
+
+    <form method="POST" action="/"   style="height: 70%; width: 30%; color: aliceblue;text-align: center; margin-top: 7%; display: table; ">
+      {{ form.csrf_token }}
+
+      <div style="display: table-row; text-align: center">
+        {{ form.high_H.label }} {{ form.high_H(size=20) }}
+      </div>
+      <div style="display: table-row; text-align: center">
+        {{ form.high_S.label }} {{ form.high_S(size=20) }}
+      </div>
+      <div style="display: table-row; text-align: center">
+        {{ form.high_V.label }} {{ form.high_V(size=20) }}
+      </div>
+
+
+      <div style="display: table-row; text-align: center">
+        {{ form.low_H.label }} {{ form.low_H(size=20) }}
+      </div>
+      <div style="display: table-row; text-align: center">
+        {{ form.low_S.label }} {{ form.low_S(size=20) }}
+      </div>
+      <div style="display: table-row; text-align: center">
+        {{ form.low_V.label }} {{ form.low_V(size=20) }}
+      </div>
+
+      <div style="display: table-row; text-align: center">
+        <button type="submit">Change HSV Range</button>
+      </div>
+
+
+    </form>
+</div>
